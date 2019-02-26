@@ -37,7 +37,7 @@ namespace AFDemo2
             
             Console.WriteLine("My database is : {0}", db);
 
-            var elements = AFElement.FindElements(db, null, "*", AFSearchField.Name, false, AFSortField.Name, AFSortOrder.Ascending, 100);
+            var elements = AFElement.FindElements(db, db.Elements["PL"], "*", AFSearchField.Name, false, AFSortField.Name, AFSortOrder.Ascending, 100);
             foreach (var element in elements)
             {
                 Console.WriteLine(element);
@@ -55,6 +55,11 @@ namespace AFDemo2
                 }
             }
 
+            var adres = elements.FirstOrDefault();
+            foreach (var atribute in adres.Attributes)
+            {
+                Console.WriteLine("{0} : {1}", atribute.Name, atribute.GetValue());
+            }
             
             
 
